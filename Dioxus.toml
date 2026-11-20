@@ -1,0 +1,9 @@
+[application]
+
+[web.app]
+# Fallback <title>; pages override it with `document::Title`.
+title = "PolymerVCS"
+
+# The site is served from the root of polymervcs.com, so no base_path is needed.
+# If it were ever served from a project page (user.github.io/<repo>/), set:
+# base_path = "<repo>"

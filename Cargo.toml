@@ -1,0 +1,32 @@
+[package]
+name = "polymervcs-site"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+dioxus = { version = "0.7.10", features = ["router", "fullstack"] }
+
+[features]
+default = ["web"]
+# Client (WebAssembly) build: hydrates the pre-rendered HTML in the browser.
+web = ["dioxus/web"]
+# Server build: only used by `dx` at build time to pre-render every static route.
+server = ["dioxus/server"]
+
+# Smaller wasm. Don't add `strip = true`: it removes metadata wasm-bindgen needs.
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+
+# Profiles dx uses for the web and server halves of a fullstack build.
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

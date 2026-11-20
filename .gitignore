@@ -1,3 +1,4 @@
 /target
 /dist
 /assets/tailwind.css
+**/node_modules
