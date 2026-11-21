@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::{Download, Package, Platform, PlatformDownloads};
+use crate::components::{Download, IconSvg, Package, Platform, PlatformDownloads};
 use crate::icons;
 
 const APP_AND_CLI: &str = "GUI + CMD clients";
@@ -105,8 +105,19 @@ const PLATFORMS: &[Platform] = &[
 pub fn Downloads() -> Element {
     rsx! {
         document::Title { "Downloads · PolymerVCS" }
-        section { class: "mx-auto w-full max-w-3xl px-4 py-16",
+        section { class: "mx-auto w-full max-w-3xl px-4 py-16 lg:max-w-5xl",
             h1 { class: "text-4xl font-bold", "Download PolymerVCS" }
+
+            div { class: "alert alert-warning mt-6",
+                IconSvg { icon: &icons::WARNING, class: "size-6" }
+                p {
+                    strong { "PolymerVCS is currently in alpha." }
+                    " Expect bugs, feature changes, and irrecoverable data loss."
+                    br { }
+                    strong { "Absolutely do not use for production workloads" }
+                    ", for now."
+                }
+            }
 
             for platform in PLATFORMS {
                 PlatformDownloads { key: "{platform.name}", platform }
