@@ -16,7 +16,7 @@ rm -rf "$PUBLIC_DIR"
 # shipping stale CSS.
 rm -f assets/tailwind.css
 
-# Install daisyUI
+# Install daisyUI, and everything else in package.json, such as allo-font
 npm i -D daisyui@latest
 
 # Use `dx build`, not `dx bundle`: as of dx 0.7.10, `bundle` accepts --ssg but
@@ -35,6 +35,10 @@ if [[ -f "$OUT_DIR/404/index.html" ]]; then
   mv "$OUT_DIR/404/index.html" "$OUT_DIR/404.html"
   rmdir "$OUT_DIR/404" 2>/dev/null || true
 fi
+
+# Render the mdBook in book/ to dist/docs/ (build-dir in book/book.toml), so
+# it's served at /docs/. This must come after dist/ is recreated above.
+mdbook build book
 
 # Custom domain, and no Jekyll processing if this folder is ever published
 # from a branch instead of through GitHub Actions.

@@ -9,6 +9,10 @@ use views::{CatchAll, Downloads, Home, NotFound, Shell};
 // Generated from /tailwind.css by dx on each build.
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 const FAVICON: Asset = asset!("/assets/favicon.svg");
+// The allo-font npm package, copied whole to /assets/allo-font/. Folder assets
+// aren't hashed, so its CSS still finds the fonts at their relative paths.
+// Install it with `npm install` before building.
+const ALLO_FONT: Asset = asset!("/node_modules/allo-font", AssetOptions::folder());
 
 const LATEST_VERSION: &str = "0.1.0";
 
@@ -75,6 +79,14 @@ async fn static_routes() -> Result<Vec<String>, ServerFnError> {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", r#type: "image/svg+xml", href: FAVICON }
+        document::Stylesheet { href: "{ALLO_FONT}/allo-friendly.css" }
+        document::Link {
+            rel: "preload",
+            href: "{ALLO_FONT}/fonts/webfonts/AlloVariableFriendly.woff2",
+            r#as: "font",
+            r#type: "font/woff2",
+            crossorigin: "anonymous",
+        }
         document::Stylesheet { href: TAILWIND_CSS }
         Router::<Route> {}
     }
