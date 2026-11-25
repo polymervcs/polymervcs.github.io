@@ -1,0 +1,26 @@
+# The docs at /docs: the Markdown in docs/, built with mdBook and a theme (theme/) in the site's style.
+# scripts/build-site.sh builds them into dist/docs/. To preview them on their own, run `mdbook serve book` from the
+# repository root.
+
+[book]
+title = "PolymerVCS"
+src = "../docs"
+
+[build]
+# Where `mdbook build book` and `mdbook serve book` put them. scripts/build-site.sh gives its own folder instead.
+build-dir = "build"
+# A page that's in SUMMARY.md but not in docs/ is a mistake, rather than a page to create.
+create-missing = false
+
+[output.html]
+theme = "theme"
+# Where the docs are on the site, so the links in mdBook's 404 page work.
+site-url = "/docs/"
+# The theme picker offers these two, as daisyUI's light and dark themes, and Auto follows the system setting, as the
+# rest of the site does.
+default-theme = "light"
+preferred-dark-theme = "coal"
+# No curly quotes, chapter numbers, or page headings in the sidebar.
+smart-punctuation = false
+no-section-label = true
+sidebar-header-nav = false

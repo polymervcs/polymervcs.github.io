@@ -1,0 +1,19 @@
+/* Allo 1.1.0, the site's font, from the allo-font npm package (node_modules/allo-font/allo-friendly.css): the
+   variable font with roundness fixed at 50, and the regular oblique for italics. Other italic weights are made from
+   that one by the browser. SIL Open Font License 1.1 (ALLO-LICENSE.txt). https://allo.joshpuckett.me */
+
+@font-face {
+    font-family: "Allo";
+    src: url("{{ resource "fonts/AlloVariableFriendly.woff2" }}") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Allo";
+    src: url("{{ resource "fonts/Allo-Oblique.woff2" }}") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}

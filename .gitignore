@@ -2,3 +2,4 @@
 /dist
 /assets/tailwind.css
 **/node_modules
+/book/build

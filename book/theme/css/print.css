@@ -1,0 +1,51 @@
+/* print.html, and printing any page: only the page content, in the light theme, as browsers leave out backgrounds. */
+
+html.light,
+html.coal {
+    color-scheme: light;
+    --color-base-100: oklch(100% 0 0);
+    --color-base-200: oklch(98% 0 0);
+    --color-base-300: oklch(95% 0 0);
+    --color-base-content: oklch(21% 0.006 285.885);
+    --color-primary: oklch(45% 0.24 277.023);
+}
+
+.menu-bar,
+.docs-sidebar,
+#mdbook-search-wrapper,
+.pager,
+.footer,
+pre > .buttons {
+    display: none !important;
+}
+
+.docs {
+    display: block;
+    max-width: none;
+    padding: 0;
+}
+
+.prose {
+    max-width: none;
+}
+
+.prose pre {
+    color: var(--color-base-content);
+    border: var(--border) solid var(--color-base-300);
+    white-space: pre-wrap;
+    overflow-x: visible;
+    break-inside: avoid;
+}
+
+.prose blockquote.blockquote-tag {
+    color: var(--color-base-content);
+    break-inside: avoid;
+}
+
+.prose :where(h1, h2, h3, h4) {
+    break-after: avoid;
+}
+
+mark {
+    background-color: transparent;
+}

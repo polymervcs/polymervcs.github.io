@@ -4,6 +4,12 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
+# The docs need mdBook, so check for it before the long dx build.
+if ! command -v mdbook >/dev/null; then
+  echo "mdbook isn't installed. See Requirements in README.md." >&2
+  exit 1
+fi
+
 CRATE_NAME="polymervcs-site"
 PUBLIC_DIR="target/dx/${CRATE_NAME}/release/web/public"
 OUT_DIR="dist"
@@ -35,6 +41,16 @@ if [[ -f "$OUT_DIR/404/index.html" ]]; then
   mv "$OUT_DIR/404/index.html" "$OUT_DIR/404.html"
   rmdir "$OUT_DIR/404" 2>/dev/null || true
 fi
+
+# The docs are the mdBook in book/, from the Markdown in docs/. Build them into
+# dist/docs/, so they're served at /docs/. This must come after dist/ is
+# recreated above.
+mdbook build book --dest-dir "$OUT_DIR/docs"
+
+# mdBook doesn't check links, or that every page is in SUMMARY.md, so check the
+# built docs. They can link to the rest of the site, so this comes after the
+# dx build.
+python3 scripts/check-docs.py "$OUT_DIR"
 
 # Custom domain, and no Jekyll processing if this folder is ever published
 # from a branch instead of through GitHub Actions.

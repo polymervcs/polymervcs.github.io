@@ -1,0 +1,555 @@
+/* The layout around the page, with the values of the Tailwind and daisyUI classes in the comments, as the rest of the
+   site is styled. 64rem is Tailwind's lg breakpoint, where the sidebar moves beside the page, and 40rem is sm. */
+
+/* Shell: the page fills the window, with the footer at the bottom. */
+#mdbook-body-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* mx-auto w-full max-w-6xl px-4 py-10 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12 lg:py-16 */
+.docs {
+    position: relative;
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 2.5rem 1rem;
+}
+
+@media (min-width: 64rem) {
+    .docs {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+        gap: 3rem;
+        padding-block: 4rem;
+    }
+}
+
+.page-wrapper {
+    min-width: 0;
+}
+
+/* Toolbar: search, theme and print. On narrow screens it's a row above the menu, and on wide ones it sits in the
+   space above the page. */
+
+.menu-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 64rem) {
+    .menu-bar {
+        position: absolute;
+        /* book.js sets top as the page scrolls, to slide mdBook's own menu bar in and out. */
+        top: 1rem !important;
+        inset-inline-end: 1rem;
+        margin: 0;
+    }
+}
+
+.menu-title {
+    display: none;
+}
+
+.icon-button {
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-field);
+    color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+    font-size: 1rem;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.icon-button:hover,
+.icon-button[aria-expanded="true"] {
+    color: var(--color-base-content);
+    background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.icon-button:focus-visible,
+.docs-sidebar-toggle:focus-visible,
+.sidebar a:focus-visible,
+.pager a:focus-visible {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 2px;
+}
+
+.theme-picker {
+    position: relative;
+}
+
+/* book.js shows it by setting display: block. */
+.theme-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    inset-inline-end: 0;
+    z-index: 20;
+    min-width: 8rem;
+    padding: 0.5rem;
+    background-color: var(--color-base-100);
+    border: var(--border) solid var(--color-base-300);
+    border-radius: var(--radius-box);
+    box-shadow: 0 4px 12px oklch(0% 0 0 / 0.1);
+    font-size: 0.875rem;
+}
+
+.theme-popup .theme {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-field);
+    text-align: start;
+    white-space: nowrap;
+}
+
+.theme-popup .theme:hover,
+.theme-popup .theme:focus-visible {
+    outline: none;
+    background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.theme-popup .theme-selected,
+.theme-popup .theme-selected:hover {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+}
+
+/* Sidebar. On narrow screens it's a collapse collapse-arrow mb-8 rounded-box border border-base-300 lg:hidden
+   menu, and on wide ones an lg:sticky lg:top-8 lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto aside. */
+
+.docs-sidebar {
+    margin-bottom: 2rem;
+    border: var(--border) solid var(--color-base-300);
+    border-radius: var(--radius-box);
+}
+
+/* collapse-title font-medium */
+.docs-sidebar-toggle {
+    display: block;
+    position: relative;
+    padding: 1rem;
+    padding-inline-end: 3rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--radius-box);
+}
+
+/* collapse-arrow */
+.docs-sidebar-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 1.4rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    box-shadow: 2px 2px;
+    transform-origin: 75% 75%;
+    transform: translateY(-100%) rotate(45deg);
+    pointer-events: none;
+}
+
+html.sidebar-visible .docs-sidebar-toggle::after {
+    transform: translateY(-50%) rotate(225deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .docs-sidebar-toggle::after {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* collapse-content */
+.sidebar {
+    padding: 0 1rem 1rem;
+}
+
+html:not(.sidebar-visible) .sidebar {
+    display: none;
+}
+
+.sidebar-scrollbox {
+    display: block;
+}
+
+.sidebar-resize-handle {
+    display: none;
+}
+
+.sidebar-iframe-outer {
+    width: 100%;
+    height: 40rem;
+    border: 0;
+}
+
+@media (min-width: 64rem) {
+    .docs-sidebar {
+        position: sticky;
+        top: 2rem;
+        align-self: start;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .docs-sidebar-toggle {
+        display: none;
+    }
+
+    /* book.js hides it with an inline style when the narrow screen menu is closed. */
+    html .sidebar {
+        display: block !important;
+        padding: 0;
+    }
+
+    /* toc.js keeps the sidebar's scroll position from page to page, so the scrollbox is what scrolls. */
+    .sidebar-scrollbox {
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+    }
+}
+
+/* The table of contents, which toc.js writes, as a menu w-full p-0, with a menu-title mt-4 for each part
+   of SUMMARY.md, and menu-active on the current page. */
+
+.sidebar ol.chapter {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+}
+
+/* toc.js writes each part title inside an otherwise empty chapter item, which the browser splits into two. */
+.sidebar li.chapter-item:empty {
+    display: none;
+}
+
+.sidebar li.part-title {
+    margin-top: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
+}
+
+.sidebar .chapter-link-wrapper {
+    display: block;
+}
+
+.sidebar .chapter a {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-field);
+    color: var(--color-base-content);
+    text-decoration: none;
+    user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sidebar .chapter a {
+        transition: color 0.2s cubic-bezier(0, 0, 0.2, 1), background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@media (hover: hover) {
+    .sidebar .chapter a:not(.active):hover {
+        background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+    }
+}
+
+.sidebar .chapter a.active {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-content);
+}
+
+/* Chapter numbers, if no-section-label is turned off in book.toml */
+.sidebar .chapter strong {
+    display: none;
+}
+
+/* Previous and next pages: mt-16 grid max-w-3xl gap-4 border-t border-base-300 pt-8 sm:grid-cols-2 */
+
+.pager {
+    display: grid;
+    gap: 1rem;
+    max-width: 48rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: var(--border) solid var(--color-base-300);
+}
+
+@media (min-width: 40rem) {
+    .pager {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pager .next {
+        grid-column-start: 2;
+    }
+}
+
+/* rounded-box border border-base-300 p-4 hover:border-primary */
+.pager a {
+    display: block;
+    padding: 1rem;
+    border: var(--border) solid var(--color-base-300);
+    border-radius: var(--radius-box);
+}
+
+.pager a:hover {
+    border-color: var(--color-primary);
+}
+
+.pager .next {
+    text-align: right;
+}
+
+.pager-label {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+}
+
+.pager-title {
+    font-weight: 500;
+}
+
+/* Footer: footer footer-center bg-base-200 p-6 text-base-content/70, as in src/views/shell.rs */
+.footer {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: var(--color-base-200);
+    color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+
+/* Search, which opens above the page */
+
+#mdbook-search-wrapper {
+    max-width: 48rem;
+    margin-bottom: 2.5rem;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+/* daisyUI's input */
+#mdbook-searchbar {
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+    background-color: var(--color-base-100);
+    border: var(--border) solid color-mix(in oklab, var(--color-base-content) 20%, transparent);
+    border-radius: var(--radius-field);
+    box-shadow: 0 1px color-mix(in oklab, var(--color-base-content) 10%, transparent) inset;
+}
+
+#mdbook-searchbar:focus {
+    outline: 2px solid color-mix(in oklab, var(--color-base-content) 20%, transparent);
+    outline-offset: 2px;
+}
+
+#mdbook-searchbar-outer.searching #mdbook-searchbar {
+    padding-inline-end: 2.5rem;
+}
+
+.spinner-wrapper {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    inset-inline-end: 0.75rem;
+    align-items: center;
+    color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+}
+
+#mdbook-searchbar-outer.searching .spinner-wrapper {
+    display: flex;
+}
+
+#fa-spin,
+.fa-spin {
+    animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.searchresults-outer {
+    padding-bottom: 1rem;
+    border-bottom: var(--border) solid var(--color-base-300);
+}
+
+.searchresults-header {
+    padding: 1rem 0.75rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+}
+
+#mdbook-searchresults li {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-field);
+}
+
+#mdbook-searchresults li.focus {
+    background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+#mdbook-searchresults a {
+    font-weight: 500;
+}
+
+#mdbook-searchresults a:hover {
+    text-decoration: underline;
+}
+
+#mdbook-searchresults .teaser {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+}
+
+#mdbook-searchresults .teaser em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-base-content);
+}
+
+/* Copy buttons, which book.js adds to code blocks, and shows on hover */
+
+.prose pre {
+    position: relative;
+}
+
+pre > .buttons {
+    position: absolute;
+    top: 0.375rem;
+    inset-inline-end: 0.375rem;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.1s linear, opacity 0.1s linear;
+}
+
+pre:hover > .buttons,
+pre:focus-within > .buttons {
+    visibility: visible;
+    opacity: 1;
+}
+
+pre > .buttons button {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-field);
+    border: var(--border) solid color-mix(in oklab, var(--color-neutral-content) 20%, transparent);
+    background-color: var(--color-neutral);
+    color: color-mix(in oklab, var(--color-neutral-content) 70%, transparent);
+    transition: color 0.1s;
+}
+
+pre > .buttons button:hover {
+    color: var(--color-neutral-content);
+}
+
+pre > .buttons .clip-button::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: currentColor;
+    /* Lucide's copy icon (ISC license) */
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>') center / contain no-repeat;
+}
+
+.tooltiptext {
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    inset-inline-end: calc(100% + 0.5rem);
+    transform: translateY(-50%);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-field);
+    background-color: var(--color-base-content);
+    color: var(--color-base-100);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-style: normal;
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.tooltipped .tooltiptext {
+    visibility: visible;
+}
+
+/* Keyboard shortcuts, which ? shows */
+
+/* book.js shows it by setting display: flex. */
+#mdbook-help-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: oklch(0% 0 0 / 0.4);
+}
+
+#mdbook-help-popup {
+    width: 100%;
+    max-width: 28rem;
+    padding: 1.5rem;
+    background-color: var(--color-base-100);
+    border: var(--border) solid var(--color-base-300);
+    border-radius: var(--radius-box);
+    box-shadow: 0 10px 30px oklch(0% 0 0 / 0.2);
+    font-size: 0.875rem;
+}
+
+.mdbook-help-title {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+#mdbook-help-popup p {
+    margin: 0.5rem 0;
+}
+
+/* daisyUI's kbd */
+#mdbook-help-popup kbd {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.5em;
+    min-height: 1.5em;
+    padding-inline: 0.5em;
+    border: var(--border) solid color-mix(in oklab, var(--color-base-content) 20%, transparent);
+    border-bottom-width: calc(var(--border) + 1px);
+    border-radius: var(--radius-field);
+    background-color: var(--color-base-200);
+    font-family: inherit;
+    font-size: 0.875rem;
+}

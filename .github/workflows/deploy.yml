@@ -18,6 +18,9 @@ concurrency:
 env:
   # Keep in step with the `dioxus` version in Cargo.toml.
   DIOXUS_CLI_VERSION: 0.7.10
+  # book/theme/index.hbs is based on this version's own template, so check the
+  # theme still works when upgrading.
+  MDBOOK_VERSION: 0.5.4
 
 jobs:
   build:
@@ -35,6 +38,9 @@ jobs:
 
       - name: Install Dioxus CLI
         run: cargo binstall "dioxus-cli@${DIOXUS_CLI_VERSION}" --no-confirm --locked
+
+      - name: Install mdBook
+        run: cargo binstall "mdbook@${MDBOOK_VERSION}" --no-confirm --locked
 
       - name: Build static site
         run: ./scripts/build-site.sh
