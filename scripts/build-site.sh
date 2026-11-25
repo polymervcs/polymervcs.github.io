@@ -36,10 +36,6 @@ if [[ -f "$OUT_DIR/404/index.html" ]]; then
   rmdir "$OUT_DIR/404" 2>/dev/null || true
 fi
 
-# Render the mdBook in book/ to dist/docs/ (build-dir in book/book.toml), so
-# it's served at /docs/. This must come after dist/ is recreated above.
-mdbook build book
-
 # Custom domain, and no Jekyll processing if this folder is ever published
 # from a branch instead of through GitHub Actions.
 cp CNAME "$OUT_DIR/CNAME"
