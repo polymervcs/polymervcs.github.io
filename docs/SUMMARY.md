@@ -7,7 +7,7 @@
 - [Concepts](user/concepts.md)
 - [Install clients](user/install.md)
 - [Get started](user/get-started.md)
-- [Commit changes](user/changes.md)
+- [Committing changes](user/committing-changes.md)
 - [Branches](user/branches.md)
 - [Merging](user/merging.md)
 - [Ignoring files](user/ignoring-files.md)

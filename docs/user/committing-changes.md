@@ -1,6 +1,6 @@
 # Commit changes
 
-## See your changes
+## Seeing your changes
 
 The **Pending Changes** tab lists how your workspace differs from its commit, in four groups:
 
@@ -15,13 +15,13 @@ While a workspace is open in the GUI client, PolymerVCS watches its folder, and 
 
 Files that match a pattern in a `.pvcsignore` file aren't listed. See [Ignoring files](ignoring-files.md).
 
-## Choose what to commit
+## Choosing what to commit
 
 Each item has a checkbox. The checked items are the ones the next commit includes, and the ones **Undo** reverts. New changes start out checked, so uncheck anything you want to leave out. The checkbox on a group's heading checks or unchecks everything in the group.
 
 To select several items, click one, then Shift-click or Ctrl-click others (Cmd-click on macOS). Right-click the selection for what you can do with it.
 
-## Commit
+## Committing
 
 1. Describe your change in the **Comment** box.
 2. Click **Commit**.
@@ -30,28 +30,28 @@ PolymerVCS uploads the checked changes, and records them as a new commit on your
 
 You can only commit when your workspace is on its branch's latest commit. If it's on an older one, [create a branch](branches.md#create-a-branch) from that commit, and commit there.
 
-## Undo changes
+## Undoing changes
 
 **Undo** puts every checked item back the way it is in your workspace's commit. Edits are discarded, deleted files come back, and added files are deleted.
 
 > [!CAUTION]
-> Undo can't be undone. The edits it discards and the added files it deletes are gone for good, so uncheck anything you want to keep first.
+> Undos cannot be undone. The edits it discards and the added files it deletes are gone for good, so uncheck anything you want to keep first.
 
-## Compare a file with its committed version
+## Comparing a file with its committed version
 
 Right-click a changed file and click **Diff to workspace**. Your diff tool opens with the committed version on one side and yours on the other. With several files selected, it opens once for each. Choose a diff tool in [Settings](tools.md) first. Folders can't be diffed.
 
-## Look at a commit
+## Looking at a commit
 
 In **Branch Explorer**, select a commit, then click **Details** to see what it changed. Right-click a file there to diff it with the commit before.
 
-## Change a commit's comment
+## Changing a commit's comment
 
 Right-click a commit in **Branch Explorer** or **Commits** and click **Change Message**. Enter the new comment, and click **Save**.
 
 What you can change depends on your role. Usually you can change the comments of your own commits, and admins can change anyone's.
 
-## Delete a commit
+## Deleting a commit
 
 Right-click a commit in **Branch Explorer** or **Commits**, click **Delete commit**, then click **Delete**. A commit can only be deleted when:
 
@@ -62,4 +62,4 @@ Right-click a commit in **Branch Explorer** or **Commits**, click **Delete commi
 If your workspace is on the commit you're deleting, commit or undo your pending changes first. The workspace then moves back to the commit before it.
 
 > [!CAUTION]
-> Deleting a commit can't be undone.
+> Deleting a commit cannot be undone.
