@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+use crate::components::IconSvg;
+use crate::icons;
 use crate::Route;
 
 #[component]
@@ -17,6 +19,13 @@ pub fn Home() -> Element {
                         Link { class: "btn btn-primary", to: Route::Downloads {}, "Download" }
                         // The docs are the mdBook in book/, not a route, so this is a plain link that loads them.
                         a { class: "btn", href: "/docs/", "Documentation" }
+                        a {
+                            class: "btn btn-square",
+                            href: "https://github.com/polymervcs/polymervcs",
+                            title: "PolymerVCS on GitHub",
+                            "aria-label": "PolymerVCS on GitHub",
+                            IconSvg { icon: &icons::GITHUB, class: "size-5" }
+                        }
                     }
                 }
             }
