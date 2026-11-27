@@ -122,7 +122,7 @@ pub fn Downloads() -> Element {
             p { class: "mt-6 text-base-content/70",
                 // Plain links, as the docs are the mdBook in book/, not routes.
                 "Installation steps are in the docs, for "
-                a { class: "link", href: "/docs/user/install.html", "the app" }
+                a { class: "link", href: "/docs/user/install.html", "the GUI client" }
                 " and for "
                 a { class: "link", href: "/docs/admin/install.html", "the server" }
                 "."

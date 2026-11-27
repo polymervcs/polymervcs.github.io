@@ -24,11 +24,11 @@ New commits always go on top of a branch's latest commit. If your workspace is o
 
 ## Your workspace's commit
 
-A workspace is always on one commit, or on a branch that doesn't have any commits yet. The app shows the name of its branch at the top of the window, as `branch @ server URL`. Switching moves the workspace to another branch or commit, and rewrites its files to match.
+A workspace is always on one commit, or on a branch that doesn't have any commits yet. The GUI client shows the name of its branch at the top of the window, as `branch @ server URL`. Switching moves the workspace to another branch or commit, and rewrites its files to match.
 
 ## Pending changes
 
-Pending changes are how the files in your workspace differ from its commit: files you've changed, added, deleted or renamed. The app notices them as you work. Each one has a checkbox, and the checked ones are what **Commit** and **Undo** act on. See [Commit changes](changes.md).
+Pending changes are how the files in your workspace differ from its commit: files you've changed, added, deleted or renamed. The GUI client notices them as you work. Each one has a checkbox, and the checked ones are what **Commit** and **Undo** act on. See [Commit changes](changes.md).
 
 ## Merging
 

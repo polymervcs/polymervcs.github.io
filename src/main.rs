@@ -14,7 +14,9 @@ const FAVICON: Asset = asset!("/assets/favicon.svg");
 // Install it with `npm install` before building.
 const ALLO_FONT: Asset = asset!("/node_modules/allo-font", AssetOptions::folder());
 
-const LATEST_VERSION: &str = "0.1.0";
+// The newest PolymerVCS release: this crate's version in Cargo.toml, which the
+// docs use too (book/version.py).
+const LATEST_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]

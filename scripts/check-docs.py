@@ -5,6 +5,7 @@
   HTML page.
 - Every link in a page goes to a file in the site that exists, and to a heading on that page that exists. Links to the
   rest of the site, such as /downloads, are checked too, so this needs the whole site, not just the docs.
+- No page still has a {{placeholder}} in it. book/version.py only fills in {{version}}, so a misspelled one is left.
 
 It reads the built HTML rather than the Markdown, so the links and heading ids are the ones mdBook made.
 
@@ -12,6 +13,7 @@ Usage: scripts/check-docs.py [site folder, which defaults to dist]
 """
 
 import os
+import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
@@ -21,12 +23,13 @@ DOCS = Path(__file__).resolve().parent.parent / "docs"
 
 
 class Page(HTMLParser):
-    """The ids in a page, and the links in its <main>, which holds the page's Markdown."""
+    """The ids in a page, and the links and text in its <main>, which holds the page's Markdown."""
 
     def __init__(self, path):
         super().__init__()
         self.ids = set()
         self.links = []
+        self.text = []
         self.in_main = False
         self.feed(path.read_text(encoding="utf-8"))
 
@@ -43,6 +46,10 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "main":
             self.in_main = False
+
+    def handle_data(self, data):
+        if self.in_main:
+            self.text.append(data)
 
 
 def served_file(site, page, path):
@@ -78,6 +85,9 @@ def main():
         if not page.is_file():
             problems.append(f"{name} isn't in docs/SUMMARY.md, so it isn't built")
             continue
+
+        for placeholder in sorted(set(re.findall(r"\{\{[^}]*\}\}", "".join(parse(page).text)))):
+            problems.append(f"{name} has {placeholder}, which isn't filled in. Only {{{{version}}}} is.")
 
         for href in parse(page).links:
             url = urlsplit(href)

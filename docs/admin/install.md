@@ -1,13 +1,16 @@
 # Install the server
 
-PolymerVCS Server runs on Linux, macOS and Windows, or in Docker. The installers set it up as a service that starts with the computer. Downloads are on the [downloads page](/downloads), and in the file names below, `<version>` stands for the version you downloaded, such as `0.1.0`.
+PolymerVCS Server runs on Linux, macOS and Windows, or in Docker. The installers set it up as a service that starts with the computer. Downloads are on the [downloads page](/downloads), and the file names below are for the latest version, {{version}}.
 
 Once it's installed, the server listens on port 3000, on every network interface. Then [set it up](setup.md) straight away, as whoever opens its web page first becomes its admin.
 
 ## Debian, Ubuntu and Linux Mint
 
+Download and install:
+
 ```bash
-sudo apt install ./polymervcs-server_<version>_amd64.deb
+curl -fLO https://github.com/polymervcs/polymervcs/releases/download/v{{version}}/polymervcs-server_{{version}}_amd64.deb
+sudo apt install ./polymervcs-server_{{version}}_amd64.deb
 ```
 
 The package installs the `polymervcs-server` systemd service, and starts it. Its data is in `/var/lib/polymervcs-server/.pvcs-server`.
@@ -20,8 +23,11 @@ sudo ufw allow 3000/tcp
 
 ## Fedora and openSUSE
 
+Download and install:
+
 ```bash
-sudo dnf install ./polymervcs-server-<version>.x86_64.rpm
+curl -fLO https://github.com/polymervcs/polymervcs/releases/download/v{{version}}/polymervcs-server-{{version}}.x86_64.rpm
+sudo dnf install ./polymervcs-server-{{version}}.x86_64.rpm
 ```
 
 On openSUSE, run `sudo zypper install` with the same file. The package installs the `polymervcs-server` systemd service, and starts it. Its data is in `/var/lib/polymervcs-server/.pvcs-server`.
@@ -35,8 +41,11 @@ sudo firewall-cmd --reload
 
 ## Arch Linux
 
+Download and install:
+
 ```bash
-sudo pacman -U polymervcs-server-<version>-x86_64.pkg.tar.zst
+curl -fLO https://github.com/polymervcs/polymervcs/releases/download/v{{version}}/polymervcs-server-{{version}}-x86_64.pkg.tar.zst
+sudo pacman -U polymervcs-server-{{version}}-x86_64.pkg.tar.zst
 ```
 
 Arch packages leave starting services to you, so start it, and have it start with the computer, with:
@@ -49,7 +58,14 @@ Its data is in `/var/lib/polymervcs-server/.pvcs-server`.
 
 ## macOS
 
-Open `polymervcs-server-<version>-universal.pkg`. It runs on Apple silicon and Intel Macs with macOS 11 or later.
+Download and open the installer:
+
+```bash
+curl -fLO https://github.com/polymervcs/polymervcs/releases/download/v{{version}}/polymervcs-server-{{version}}-universal.pkg
+open polymervcs-server-{{version}}-universal.pkg
+```
+
+PolymerVCS Server runs on Apple silicon and Intel Macs with macOS 11 or later.
 
 The server runs as the `com.polymervcs.server` launchd daemon, as a hidden user called `_polymervcs` that the installer creates. If the macOS firewall is on, the installer lets the server accept incoming connections.
 
@@ -58,7 +74,16 @@ The server runs as the `com.polymervcs.server` launchd daemon, as a hidden user 
 
 ## Windows
 
-Run `polymervcs-server-<version>-x64-setup.exe`. It needs 64-bit Windows 10 or later.
+Download and run the installer, in PowerShell:
+
+```powershell
+curl.exe -fLO https://github.com/polymervcs/polymervcs/releases/download/v{{version}}/polymervcs-server-{{version}}-x64-setup.exe
+.\polymervcs-server-{{version}}-x64-setup.exe
+```
+
+Type `curl.exe`, not `curl`, which is a different command in Windows PowerShell.
+
+PolymerVCS Server needs 64-bit Windows 10 or later.
 
 The server runs as the **polymervcs-server** Windows service, as the Local Service account, and starts automatically a little after Windows does. Setup adds a Windows Firewall rule called **PolymerVCS Server**, which lets it accept connections on domain and private networks. Connections on networks Windows treats as public are still blocked.
 

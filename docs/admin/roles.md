@@ -49,7 +49,7 @@ To add a role, enter its name under **Add a role** and click **Add role**. To re
 
 **List branches** and **List commits** aren't checked yet. Everyone who can sign in can see every branch and commit, whatever their role.
 
-Renaming and deleting branches isn't in the app yet, so the branch permissions other than **Create branches** don't make a difference so far.
+Renaming and deleting branches isn't in the GUI client yet, so the branch permissions other than **Create branches** don't make a difference so far.
 
 ## After an update
 

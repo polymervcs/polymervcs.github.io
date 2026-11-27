@@ -30,7 +30,7 @@ Everyone on the server can sign in to the web page, but the links only appear fo
 1. Set `base_url` in the server's [configuration](configuration.md) to the address your team reaches the server at, such as `http://vcs.example.com`. Invite links are made from it, and until it's set, they point at `localhost`.
 2. To have invites emailed, [set up email](configuration.md#email). Without it, you copy each invite link and send it yourself.
 3. [Invite your team](users.md).
-4. Send them the server's URL, such as `http://vcs.example.com:3000`, and point them to [Install the app](../user/install.md) and [Get started](../user/get-started.md).
+4. Send them the server's URL, such as `http://vcs.example.com:3000`, and point them to [Install the GUI client](../user/install.md) and [Get started](../user/get-started.md).
 
 ## Keep traffic private
 

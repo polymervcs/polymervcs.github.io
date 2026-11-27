@@ -6,15 +6,15 @@
 Check the server's URL as well as your email address and password. The URL needs its `http://` or `https://`, and its port if it has one, such as `http://vcs.example.com:3000`. If you haven't [accepted your invite](get-started.md#accept-your-invite) yet, do that first. If it still fails, check with your admin that the server is running and that your computer can reach it.
 
 **Your session for … has expired. Please sign in again.**\
-You haven't used PolymerVCS for a while. Sign in again in the app.
+You haven't used PolymerVCS for a while. Sign in again in the GUI client.
 
 **You are not signed in to …**\
-`pvcs` has no sign-in for that server. Sign in with the app, or with `pvcs signin`.
+`pvcs` has no sign-in for that server. Sign in with the GUI client, or with `pvcs signin`.
 
 ## Pending changes
 
 **A change I made isn't listed.**\
-Changes made while the workspace wasn't open in the app, or with `pvcs`, only appear once you click **Refresh** in **Pending Changes**. If it's still missing, check whether a [`.pvcsignore`](ignoring-files.md) pattern matches it.
+Changes made while the workspace wasn't open in the GUI client, or with `pvcs`, only appear once you click **Refresh** in **Pending Changes**. If it's still missing, check whether a [`.pvcsignore`](ignoring-files.md) pattern matches it.
 
 **None of the pending changes are marked to be committed**\
 Check at least one item in **Pending Changes** before you commit.
@@ -69,4 +69,4 @@ Your role on the server doesn't allow it. Ask your admin.
 There's already a workspace in that folder. Open it with **Open Workspace**, or choose another name or parent folder.
 
 **A workspace is missing from my recent workspaces.**\
-The app drops workspaces it can't find, such as ones that were moved or deleted. To add one back, open it with **Open Workspace**.
+The GUI client drops workspaces it can't find, such as ones that were moved or deleted. To add one back, open it with **Open Workspace**.

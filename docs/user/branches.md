@@ -29,4 +29,4 @@ New commits always go on a branch's latest commit, so switching to an older comm
 
 ## Rename and delete branches
 
-Renaming and deleting branches aren't available in the app yet. The **Rename Branch** item in a branch's menu doesn't do anything.
+Renaming and deleting branches aren't available in the GUI client yet. The **Rename Branch** item in a branch's menu doesn't do anything.

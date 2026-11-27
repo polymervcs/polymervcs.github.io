@@ -11,7 +11,7 @@ The **Pending Changes** tab lists how your workspace differs from its commit, in
 | Deleted items | D | Files and folders you've deleted |
 | Renamed items | R | Files and folders you've renamed or moved |
 
-While a workspace is open in the app, PolymerVCS watches its folder, and your changes appear as you save them. Changes made while the workspace wasn't open don't appear until you click the **Refresh** button, at the top of the tab.
+While a workspace is open in the GUI client, PolymerVCS watches its folder, and your changes appear as you save them. Changes made while the workspace wasn't open don't appear until you click the **Refresh** button, at the top of the tab.
 
 Files that match a pattern in a `.pvcsignore` file aren't listed. See [Ignoring files](ignoring-files.md).
 

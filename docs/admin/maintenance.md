@@ -25,7 +25,7 @@ Back up the server first. See [Data and backups](data.md#back-up-the-server). Th
 
   Then run it again with the same `docker run` command as before, or run `docker compose pull && docker compose up -d` if you use Compose.
 
-Have your team update their apps too. While PolymerVCS is in alpha, keep the apps and the server on the same version.
+Have your team update their GUI clients and `pvcs` too. While PolymerVCS is in alpha, keep the clients and the server on the same version.
 
 ## Logs
 

@@ -13,7 +13,7 @@ Everyone you invite gets the **developer** role.
 
 If [email is set up](configuration.md#email), the server emails them a link, and the page says the invite is on its way. Otherwise, or if the email couldn't be sent, the page shows the link instead. Copy it and send it to them yourself.
 
-The link takes them to a page where they choose a password. It works once, and expires after 7 days. Once they've used it, they show as **Active**, and can sign in to the app. Send them the server's URL too, and point them to [Get started](../user/get-started.md).
+The link takes them to a page where they choose a password. It works once, and expires after 7 days. Once they've used it, they show as **Active**, and can sign in to the GUI client. Send them the server's URL too, and point them to [Get started](../user/get-started.md).
 
 Each email address can only have one account on a server.
 
@@ -35,6 +35,6 @@ There's no password reset yet. Someone who has forgotten their password has to b
 
 ## Sign-ins
 
-People stay signed in to the app until they haven't used it for about a day. Signing out of the server's web page ends that sign-in on the server too.
+People stay signed in to the GUI client until they haven't used it for about a day. Signing out of the server's web page ends that sign-in on the server too.
 
 To sign everyone out at once, such as when you think a sign-in has been stolen, stop the server, delete `auth/auth.secret` in its [data folder](data.md), and start it again. The server makes a new one, and every sign-in ends.

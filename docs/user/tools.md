@@ -40,10 +40,10 @@ code --diff "$OLD" "$NEW"
 
 ## Check for updates
 
-The top of **Settings** shows which version you have. Click **Check for update** to see whether there's a newer one. To update, see [Install the app](install.md#updates).
+The top of **Settings** shows which version you have. Click **Check for update** to see whether there's a newer one. To update, see [Install the GUI client](install.md#updates).
 
 ## Where settings are kept
 
-The app's settings, your sign-ins and your list of recent workspaces are in `.pvcs/config.json` in your home folder (`%USERPROFILE%\.pvcs\config.json` on Windows). `pvcs` uses the same file. It holds what keeps you signed in, so don't share it.
+The GUI client's settings, your sign-ins and your list of recent workspaces are in `.pvcs/config.json` in your home folder (`%USERPROFILE%\.pvcs\config.json` on Windows). `pvcs` uses the same file. It holds what keeps you signed in, so don't share it.
 
-If the file can't be read, the app renames it to `config.json.bak` and starts again with default settings.
+If the file can't be read, the GUI client renames it to `config.json.bak` and starts again with default settings.

@@ -12,8 +12,14 @@ build-dir = "build"
 # A page that's in SUMMARY.md but not in docs/ is a mistake, rather than a page to create.
 create-missing = false
 
+# Replaces {{version}} in the docs with the newest release, the version in /Cargo.toml.
+[preprocessor.version]
+command = "python3 version.py"
+
 [output.html]
 theme = "theme"
+# Adds a copy button after each <code class="copy"> in the docs.
+additional-js = ["theme/copy-button.js"]
 # Where the docs are on the site, so the links in mdBook's 404 page work.
 site-url = "/docs/"
 # The theme picker offers these two, as daisyUI's light and dark themes, and Auto follows the system setting, as the

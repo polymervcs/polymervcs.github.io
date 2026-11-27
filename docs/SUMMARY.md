@@ -4,7 +4,7 @@
 
 # Using PolymerVCS
 
-- [Install the app](user/install.md)
+- [Install clients](user/install.md)
 - [Concepts](user/concepts.md)
 - [Get started](user/get-started.md)
 - [Commit changes](user/changes.md)

@@ -39,4 +39,4 @@ Click the **Cancel merge** button next to the name of the branch you're merging 
 
 ## From the command line
 
-`pvcs merge-from-branch <branch>` starts a merge from the latest commit of a branch, given by its full name. Resolve and apply it in the app.
+`pvcs merge-from-branch <branch>` starts a merge from the latest commit of a branch, given by its full name. Resolve and apply it in the GUI client.

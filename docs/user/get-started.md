@@ -2,7 +2,7 @@
 
 To start, you need:
 
-- the PolymerVCS app, [installed](install.md),
+- the PolymerVCS GUI client, [installed](install.md),
 - your server's URL, such as `http://vcs.example.com:3000`,
 - an invite to the server, from whoever runs it.
 
@@ -18,13 +18,13 @@ That also signs you in to the server's web page. You don't need the web page to 
 
 The link only works once, and it expires 7 days after it was sent. If it's expired, ask your admin to resend your invite.
 
-## Sign in to the app
+## Sign in to the GUI client
 
 1. Open PolymerVCS.
 2. Enter the server's URL. Include the `http://` or `https://`, and the port if there is one, such as `http://vcs.example.com:3000`.
 3. Enter your email address and password, then click **Submit**.
 
-The app keeps you signed in. If you haven't used it for about a day, it asks you to sign in again.
+The GUI client keeps you signed in. If you haven't used it for about a day, it asks you to sign in again.
 
 ## Create a workspace
 
@@ -64,4 +64,4 @@ Most actions are in the menu you get when you right-click a file, branch or comm
 
 ## Sign out
 
-On the home screen, click **Sign out**. The app forgets your sign-in on this computer. Your workspaces stay as they are.
+On the home screen, click **Sign out**. The GUI client forgets your sign-in on this computer. Your workspaces stay as they are.

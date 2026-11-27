@@ -1,5 +1,8 @@
 [package]
 name = "polymervcs-site"
+# The newest PolymerVCS release, without the build number. The downloads page,
+# api/v1/releases/latest.json and the docs all use it, so update it on every
+# release.
 version = "0.1.0"
 edition = "2024"
 publish = false

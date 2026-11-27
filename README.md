@@ -7,7 +7,7 @@ Source for [polymervcs.com](https://polymervcs.com). It's a [Dioxus](https://dio
 - Rust (stable) with the WebAssembly target: `rustup target add wasm32-unknown-unknown`
 - Dioxus CLI 0.7.10: `cargo binstall dioxus-cli@0.7.10` (or `cargo install dioxus-cli@0.7.10 --locked`)
 - mdBook 0.5.4, for the docs: `cargo binstall mdbook@0.5.4` (or `cargo install mdbook@0.5.4 --locked`)
-- Python 3, which checks the docs' links
+- Python 3.11 or later, which fills in the version in the docs and checks their links
 
 ## Styling
 
@@ -43,7 +43,7 @@ python3 -m http.server -d dist 8080
 - In the browser, the WebAssembly bundle hydrates the pre-rendered HTML, so links switch pages on the client side.
 - The `/404` route is moved to `dist/404.html`, which GitHub Pages serves for unknown paths.
 - `CNAME` is copied into `dist/` and `.nojekyll` is added.
-- `LATEST_VERSION` in `src/main.rs` is the newest release, such as `0.1.0`. Update it on every release. It's the plain version from the PolymerVCS workspace `Cargo.toml`, without the build number. The downloads page at `/downloads` puts it in the file names it lists, and links each name to `https://github.com/polymervcs/polymervcs/releases/download/v<version>/<name>`. So tag each release `v<version>`, such as `v0.1.0`, and upload its files under the names the page shows.
+- The `version` in this repository's `Cargo.toml` is the newest release, such as `0.1.0`. Update it on every release, to the plain version from the PolymerVCS workspace `Cargo.toml`, without the build number. `src/main.rs` reads it as `LATEST_VERSION`, and the docs fill it in too (see [Documentation](#documentation)). The downloads page at `/downloads` puts it in the file names it lists, and links each name to `https://github.com/polymervcs/polymervcs/releases/download/v<version>/<name>`. So tag each release `v<version>`, such as `v0.1.0`, and upload its files under the names the page shows.
 - When `dx build --ssg` starts the server, the server writes `LATEST_VERSION` as a JSON string, such as `"0.1.0"`, to `api/v1/releases/latest.json`. pvcs's update check fetches it from `https://polymervcs.com/api/v1/releases/latest.json`.
 
 ## Documentation
@@ -58,7 +58,8 @@ That serves them at the root of `http://localhost:3000`, rather than at `/docs`,
 
 - `docs/SUMMARY.md` lists every page in sidebar order, in [mdBook's format](https://rust-lang.github.io/mdBook/format/summary.html): after its `# Summary` title, a `# ` line starts a section, and a `- [Title](path.md)` or `[Title](path.md)` line adds a page. mdBook only builds the pages it lists. `index.md` is served at `/docs/`, and `path/name.md` at `/docs/path/name.html`.
 - Pages link to each other by relative `.md` paths, such as `[Configuration](../admin/configuration.md#email)`, which also work on GitHub. mdBook rewrites them to `.html`.
-- mdBook doesn't check links, so after building the docs, `scripts/build-site.sh` runs `scripts/check-docs.py`. It fails the build if a page in `docs/` isn't in `SUMMARY.md`, or a link in the docs goes to a page or heading that doesn't exist, including links to the rest of the site, such as `/downloads`. To check changes to the docs without the whole build, rebuild just the docs into an existing `dist/`, then run the check:
+- `{{version}}` in a page becomes the newest release, the `version` in `Cargo.toml`, such as in the install pages' file names: `polymervcs-{{version}}-universal.pkg`. The preprocessor `book/version.py` fills it in, so `mdbook serve book` shows it too.
+- mdBook doesn't check links, so after building the docs, `scripts/build-site.sh` runs `scripts/check-docs.py`. It fails the build if a page in `docs/` isn't in `SUMMARY.md`, a link in the docs goes to a page or heading that doesn't exist, including links to the rest of the site, such as `/downloads`, or a page still has a placeholder in `{{ }}`, such as a misspelled `{{version}}`. To check changes to the docs without the whole build, rebuild just the docs into an existing `dist/`, then run the check:
 
   ```bash
   mdbook build book --dest-dir dist/docs
@@ -68,6 +69,7 @@ That serves them at the root of `http://localhost:3000`, rather than at `/docs`,
   python3 scripts/check-docs.py
   ```
 - Headings get ids from their text, such as `#set-up-email` for "Set up email".
+- `<code class="copy">pvcs update</code>` in a page is inline code with a copy button after it, like the site's `CopyButton`. `book/theme/copy-button.js` adds the button. On GitHub, and without JavaScript, it's plain inline code.
 - GitHub-style alerts (`> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` and `[!CAUTION]`) are styled as daisyUI soft alerts.
 - The theme is in the site's style: the same font, daisyUI's light and dark colors, Tailwind's `prose` text styles, and the site's footer, plus mdBook's search, a light and dark theme picker, and copy buttons on code. Its CSS copies the Tailwind and daisyUI values by hand, so a change to the site's look, such as in `tailwind.css` or the footer in `src/views/shell.rs`, needs the same change in `book/theme/css/`.
 - `book/theme/index.hbs` is based on mdBook 0.5's own template, as its scripts depend on the ids in it. When upgrading mdBook, check the theme still works, and change `MDBOOK_VERSION` in the workflow.
