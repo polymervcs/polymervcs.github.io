@@ -5,7 +5,7 @@ Files like textures, models, audio and scenes can't be merged. When two people c
 > [!NOTE]
 > File locking isn't available yet. You can set up lock rules now, but no files are locked until a later version.
 
-Manage them on the **Lock Rules** page of the server's web page. Everyone with **List lock rules** can see them, and **Edit lock rules** is needed to change them. See [Roles and permissions](roles.md).
+Manage them on the **Lock Rules** page of the server's web UI. Everyone with **List lock rules** can see them, and **Edit lock rules** is needed to change them. See [Roles and permissions](roles.md).
 
 ## Add lock rules
 

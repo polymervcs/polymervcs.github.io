@@ -1,6 +1,6 @@
 # Roles and permissions
 
-Each person on a server has one role, and a role is a set of permissions. Manage them on the **Roles & Permissions** page of the server's web page.
+Each person on a server has one role, and a role is a set of permissions. Manage them on the **Roles & Permissions** page of the server's web UI.
 
 ## The built-in roles
 

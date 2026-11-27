@@ -1,6 +1,6 @@
 # Users and invites
 
-People join a server by invite. Manage them on the **Users** page of the server's web page, which lists everyone's email address, role, when they were added, and whether they're **Active** or still **Invited**.
+People join a server by invite. Manage them on the **Users** page of the server's web UI, which lists everyone's email address, role, when they were added, and whether they're **Active** or still **Invited**.
 
 What you can do there depends on your role. See [Roles and permissions](roles.md).
 
@@ -35,6 +35,6 @@ There's no password reset yet. Someone who has forgotten their password has to b
 
 ## Sign-ins
 
-People stay signed in to the GUI client until they haven't used it for about a day. Signing out of the server's web page ends that sign-in on the server too.
+People stay signed in to the GUI client until they haven't used it for about a day. Signing out of the server's web UI ends that sign-in on the server too.
 
 To sign everyone out at once, such as when you think a sign-in has been stolen, stop the server, delete `auth/auth.secret` in its [data folder](data.md), and start it again. The server makes a new one, and every sign-in ends.

@@ -2,7 +2,7 @@
 
 PolymerVCS Server runs on Linux, macOS and Windows, or in Docker. The installers set it up as a service that starts with the computer. Downloads are on the [downloads page](/downloads), and the file names below are for the latest version, {{version}}.
 
-Once it's installed, the server listens on port 3000, on every network interface. Then [set it up](setup.md) straight away, as whoever opens its web page first becomes its admin.
+Once it's installed, the server listens on port 3000, on every network interface. Then [set it up](setup.md) straight away, as whoever opens its web UI first becomes its admin.
 
 ## Debian, Ubuntu and Linux Mint
 

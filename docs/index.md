@@ -9,7 +9,7 @@ PolymerVCS is a version control system for game development, and for other proje
 
 - **GUI Client** allows users to commit changes, create and switch branches, and merge to a repository.
 - **CMD Client** For those who don't want to use a GUI, and for scripting & CI/CD pipelines.
-- **Server** holds the repository and user accounts. Its Web UI allows admins to set up users, roles, and permissions.
+- **Server** holds the repository and user accounts. Its web UI allows admins to set up users, roles, and permissions.
 
 Everything is on the [downloads page](/downloads), and every app works on Linux, macOS, and Windows.
 

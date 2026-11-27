@@ -2,7 +2,7 @@
 
 ## Create the admin account
 
-As soon as the server is [installed](install.md), open its web page in a browser, at `http://<server>:3000`, such as `http://vcs.example.com:3000`. On the computer the server runs on, that's `http://localhost:3000`.
+As soon as the server is [installed](install.md), open its web UI in a browser, at `http://<server>:3000`, such as `http://vcs.example.com:3000`. On the computer the server runs on, that's `http://localhost:3000`.
 
 A new server opens on **Welcome to PolymerVCS**:
 
@@ -15,7 +15,7 @@ This first account has the admin role, which can do everything. Then sign in wit
 > [!IMPORTANT]
 > Until this account exists, anyone who can reach the server can create it, and take the server over. Create it right after installing, before you open the server up to your network.
 
-## The server's web page
+## The server's web UI
 
 Once you're signed in, the bar at the top has links to:
 
@@ -23,7 +23,7 @@ Once you're signed in, the bar at the top has links to:
 - **Roles & Permissions**, where you choose what each role can do. See [Roles and permissions](roles.md).
 - **Lock Rules**. See [Lock rules](lock-rules.md).
 
-Everyone on the server can sign in to the web page, but the links only appear for people whose role can use them. The bar also shows who's signed in, the server's version, and when there's a newer version available.
+Everyone on the server can sign in to the web UI, but the links only appear for people whose role can use them. The bar also shows who's signed in, the server's version, and when there's a newer version available.
 
 ## Next steps
 

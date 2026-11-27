@@ -4,7 +4,7 @@
 
 The server checks for a new version once a day. When there is one:
 
-- its web page shows the new version in the bar at the top, next to the server's own, and
+- its web UI shows the new version in the bar at the top, next to the server's own, and
 - if [email is set up](configuration.md#email), every admin is emailed once about it.
 
 The server doesn't update itself.

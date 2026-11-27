@@ -8,20 +8,20 @@ To start, you need:
 
 ## Accept your invite
 
-Your invite arrives either as an email titled "You have been invited to a PolymerVCS Server", or as a link your admin sends you some other way.
+Your invite arrives either as an email, or as a link your admin sends you directly.
 
 1. Open the link in a web browser.
-2. Choose a password. It has to be strong enough to turn the strength bar green.
+2. Choose a strong password.
 3. Click **Set password**.
 
-That also signs you in to the server's web page. You don't need the web page to use PolymerVCS, so you can close it.
+That also signs you in to the server's web UI. You don't need the web UI to use PolymerVCS, so you can close it.
 
 The link only works once, and it expires 7 days after it was sent. If it's expired, ask your admin to resend your invite.
 
 ## Sign in to the GUI client
 
 1. Open PolymerVCS.
-2. Enter the server's URL. Include the `http://` or `https://`, and the port if there is one, such as `http://vcs.example.com:3000`.
+2. Enter the server's URL. Include `http://` or `https://`, and the port if there is one. Ex: `http://vcs.example.com:3000`.
 3. Enter your email address and password, then click **Submit**.
 
 The GUI client keeps you signed in. If you haven't used it for about a day, it asks you to sign in again.
@@ -35,7 +35,7 @@ On the home screen:
 3. Click **...** and choose the **Parent Directory**, the folder to create the workspace in.
 4. Click **Create Workspace**.
 
-PolymerVCS creates the folder, downloads the repository into it, and fills it with the files from the latest commit on `main`. Then it opens the workspace. There can't already be a workspace in that folder.
+PolymerVCS creates the given folder, downloads the repository database, populates it from the latest commit on `main`, and finally opens the workspace. There can't already be a workspace in that folder.
 
 ## Open a workspace
 
