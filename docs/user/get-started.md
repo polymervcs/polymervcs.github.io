@@ -54,7 +54,7 @@ At the top of a workspace's window are:
 
 Below them are tabs:
 
-- **Pending Changes** lists what you've changed since your workspace's commit. See [Commit changes](changes.md).
+- **Pending Changes** lists what you've changed since your workspace's commit. See [Commit changes](committing-changes.md).
 - **Branch Explorer** draws the repository's branches and commits over time. See [Branches](branches.md).
 - **Branches** lists every branch.
 - **Commits** lists every commit.

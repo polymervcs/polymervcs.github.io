@@ -28,7 +28,7 @@ A workspace is always either working off of a given commit, or an empty branch. 
 
 ## Pending changes
 
-Pending changes are how the files in your workspace differ from its commit: files you've changed, added, deleted or renamed. The GUI client notices them as you work. Each one has a checkbox, and the checked ones are what **Commit** and **Undo** act on. See [Commit changes](changes.md).
+Pending changes are how the files in your workspace differ from its commit: files you've changed, added, deleted or renamed. The GUI client notices them as you work. Each one has a checkbox, and the checked ones are what **Commit** and **Undo** act on. See [Commit changes](committing-changes.md).
 
 ## Merging
 

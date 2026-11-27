@@ -31,7 +31,7 @@ A resolved conflict is written to your workspace straight away, and listed in th
 
 Once every conflict is resolved, click **Apply Merge**. PolymerVCS writes the rest of the other side's changes into your workspace, and the **Merge** tab closes. If applying the merge would overwrite one of your pending changes, it stops and says which, so you can undo that first.
 
-The merged changes are now pending changes. Check that everything works, then [commit](changes.md#commit) as usual. A merge commit has to include every pending change, so leave them all checked. In **Branch Explorer**, an arrow shows where the merge came from.
+The merged changes are now pending changes. Check that everything works, then [commit](committing-changes.md#committing) as usual. A merge commit has to include every pending change, so leave them all checked. In **Branch Explorer**, an arrow shows where the merge came from.
 
 ## Cancel a merge
 
