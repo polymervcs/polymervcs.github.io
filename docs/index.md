@@ -22,6 +22,5 @@ If you're setting up a server for your team, [install the server](admin/install.
 ## Current Limitations
 
 - File locking. Admins can already set up [lock rules](admin/lock-rules.md), but no files are locked.
-- Renaming and deleting branches in the GUI client.
 - Changing someone's role, or resetting a forgotten password. See [Users and invites](admin/users.md).
 - HTTPS in the server itself. See [Set up the server](admin/setup.md#keep-traffic-private).
