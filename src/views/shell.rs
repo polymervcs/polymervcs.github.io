@@ -1,11 +1,14 @@
 use dioxus::prelude::*;
 
+use crate::components::ThemeButton;
 use crate::Route;
 
 #[component]
 pub fn Shell() -> Element {
     rsx! {
-        div { class: "flex min-h-screen flex-col bg-base-100 text-base-content",
+        div { class: "relative flex min-h-screen flex-col bg-base-100 text-base-content",
+            // There's no header, so the theme button sits in the top corner.
+            div { class: "absolute top-2 right-2", ThemeButton {} }
             // header { class: "navbar border-b border-base-300 bg-base-100",
             //     div { class: "flex-1",
             //         Link { class: "btn btn-ghost text-xl", to: Route::Home {}, "PolymerVCS" }

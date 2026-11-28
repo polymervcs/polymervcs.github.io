@@ -4,6 +4,7 @@ mod components;
 mod icons;
 mod views;
 
+use components::THEME_SCRIPT;
 use views::{CatchAll, Downloads, Home, NotFound, Shell};
 
 // Generated from /tailwind.css by dx on each build.
@@ -80,6 +81,7 @@ async fn static_routes() -> Result<Vec<String>, ServerFnError> {
 #[component]
 fn App() -> Element {
     rsx! {
+        document::Script { "{THEME_SCRIPT}" }
         document::Link { rel: "icon", r#type: "image/svg+xml", href: FAVICON }
         document::Stylesheet { href: "{ALLO_FONT}/allo-friendly.css" }
         document::Link {

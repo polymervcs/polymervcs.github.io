@@ -11,7 +11,7 @@ publish = false
 dioxus = { version = "0.7.10", features = ["router", "fullstack"] }
 gloo-timers = { version = "0.3.0", features = ["futures"] }
 wasm-bindgen-futures = "0.4.80"
-web-sys = { version = "0.3.107", features = ["Clipboard", "Navigator", "Window"] }
+web-sys = { version = "0.3.107", features = ["Clipboard", "Document", "Element", "MediaQueryList", "Navigator", "Storage", "Window"] }
 
 [features]
 default = ["web"]

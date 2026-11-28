@@ -4,6 +4,10 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
+@custom-variant theme-auto (&:where(:root:not([data-theme]) *));
+@custom-variant theme-light (&:where([data-theme=light] *));
+@custom-variant theme-dark (&:where([data-theme=dark] *));
+
 @theme {
   --font-sans: "Allo", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

@@ -15,6 +15,8 @@ The site uses [Tailwind CSS](https://tailwindcss.com) v4, [daisyUI](https://dais
 
 The site font is [Allo](https://allo.joshpuckett.me), from the `allo-font` npm package. `src/main.rs` bundles `node_modules/allo-font` as a folder asset, which dx copies unhashed to `/assets/allo-font/`, and links its `allo-friendly.css` (roundness fixed at the default 50, less than half the size of `allo.css`'s font). `tailwind.css` puts "Allo" first in `--font-sans`, which Tailwind applies to the whole page. Run `npm install` before building, or the `asset!` for the font fails to compile.
 
+The theme button in the top corner of every page (`src/components/theme_button.rs`) switches between Auto, which follows the system's theme, daisyUI's light theme and its dark theme. It sets `data-theme` on `<html>`, or removes it for Auto. It saves the choice in `localStorage` the way the docs' theme picker does, as `mdbook-theme` (`light`, `coal` for dark, or nothing for Auto), so the docs and the rest of the site share it. `THEME_SCRIPT`, inline in each page's `<head>`, applies the saved theme before the page is shown, and the `theme-auto`, `theme-light` and `theme-dark` variants in `tailwind.css` pick the button's icon from `data-theme`, so it's right before the WebAssembly loads.
+
 ## Develop
 
 ```bash
